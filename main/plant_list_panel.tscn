@@ -1,0 +1,226 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctsmpi4wsn67l"]
+
+[ext_resource type="Script" uid="uid://bm5nguvilauib" path="res://main/plant_list_panel.gd" id="1_ghhpe"]
+[ext_resource type="Texture2D" uid="uid://mqq6ouulbum7" path="res://main/plant_panel.png" id="2_6cyp4"]
+[ext_resource type="Script" uid="uid://c0l1c5od4eue4" path="res://main/entry_bag.gd" id="4_6cyp4"]
+[ext_resource type="Texture2D" uid="uid://dw3eeththdtek" path="res://assets/ui/buttons/close.png" id="5_hnvwd"]
+[ext_resource type="Script" uid="uid://xfb1d2tr5gwi" path="res://main/plant_fan_list.gd" id="7_fan"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_display_panel"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9, 0.9, 0.9, 0.14)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qw435"]
+load_path = "res://.godot/imported/豆道长.png-c3f359becb41fdba9dbede32c9d7219f.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stat_panel"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.92, 0.92, 0.92, 0.12)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="PlantListPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ghhpe")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6cyp4")
+expand_mode = 2
+
+[node name="PlantListFrame" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.04
+anchor_top = 0.09
+anchor_right = 0.3
+anchor_bottom = 0.92
+
+[node name="PlantList" type="Control" parent="Control/PlantListFrame"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = -11.0
+offset_bottom = -12.0
+script = ExtResource("7_fan")
+
+[node name="PlantDetail" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.22
+anchor_top = 0.08
+anchor_right = 0.6
+anchor_bottom = 0.98
+
+[node name="SpriteContainer" type="Panel" parent="Control/PlantDetail"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.08
+anchor_right = 0.93
+anchor_bottom = 0.38
+theme_override_styles/panel = SubResource("StyleBoxFlat_display_panel")
+
+[node name="TextureRect" type="TextureRect" parent="Control/PlantDetail/SpriteContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_qw435")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlantData" type="Control" parent="Control/PlantDetail"]
+layout_mode = 1
+anchor_top = 0.42
+anchor_right = 1.0
+anchor_bottom = 0.6
+offset_left = 24.0
+offset_right = -24.0
+
+[node name="HPPanel" type="Panel" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.48
+anchor_bottom = 0.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_panel")
+
+[node name="AttackPanel" type="Panel" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52
+anchor_right = 1.0
+anchor_bottom = 0.42
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_panel")
+
+[node name="RangePanel" type="Panel" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.58
+anchor_right = 0.48
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_panel")
+
+[node name="SpeedPanel" type="Panel" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_panel")
+
+[node name="HP" type="Label" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.48
+anchor_bottom = 0.42
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_font_sizes/font_size = 17
+text = "攻击:10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attack" type="Label" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52
+anchor_right = 1.0
+anchor_bottom = 0.42
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_font_sizes/font_size = 17
+text = "攻击:10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackRange" type="Label" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.58
+anchor_right = 0.48
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_font_sizes/font_size = 17
+text = "攻击:10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeed" type="Label" parent="Control/PlantDetail/PlantData"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52
+anchor_top = 0.58
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_font_sizes/font_size = 17
+text = "攻击:10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EntryBag" type="Control" parent="Control/PlantDetail"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -90.0
+offset_right = 90.0
+offset_bottom = 180.0
+script = ExtResource("4_6cyp4")
+
+[node name="Warehouse" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.6
+anchor_top = 0.1
+anchor_right = 0.96
+anchor_bottom = 0.95
+script = ExtResource("4_6cyp4")
+grid_columns = 6
+grid_rows = 8
+
+[node name="CloseBtn" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1076.0
+offset_top = 31.0
+offset_right = 1197.0
+offset_bottom = 153.0
+scale = Vector2(0.297422, 0.31539)
+texture_normal = ExtResource("5_hnvwd")

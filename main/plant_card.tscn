@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bplantcard01"]
+
+[ext_resource type="Script" uid="uid://c5v4tgmcwonnd" path="res://main/plant_card.gd" id="1_plant_card"]
+
+[node name="PlantCard" type="Control"]
+custom_minimum_size = Vector2(210, 76)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_plant_card")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+expand_mode = 1
+stretch_mode = 5

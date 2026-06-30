@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://du6j5074leqfi"]
+
+[ext_resource type="Texture2D" uid="uid://dfeyv3n5enl7b" path="res://main/bg.png" id="2_kfbq2"]
+[ext_resource type="Texture2D" uid="uid://7k1we2hxt8uv" path="res://assets/ui/buttons/系统.png" id="3_btn_sys"]
+[ext_resource type="Texture2D" uid="uid://dnpjgdwbh4rye" path="res://assets/ui/buttons/植物.png" id="4_btn_plant"]
+[ext_resource type="Script" uid="uid://bru53sxb8g8ti" path="res://main/main.gd" id="5_main"]
+[ext_resource type="PackedScene" uid="uid://ctsmpi4wsn67l" path="res://main/plant_list_panel.tscn" id="6_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://bsystempanel0" path="res://main/system_panel.tscn" id="7_sp"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_main")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kfbq2")
+expand_mode = 2
+
+[node name="LevelCardScroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.08
+anchor_right = 0.84
+anchor_bottom = 0.86
+offset_left = 128.84
+offset_top = 98.16
+offset_right = -18.68
+offset_bottom = -38.28
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="LevelCardGrid" type="GridContainer" parent="LevelCardScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="BottomButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -286.0
+offset_top = -102.0
+offset_right = -16.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PlantButton" type="TextureButton" parent="BottomButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("4_btn_plant")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SystemButton" type="TextureButton" parent="BottomButtons"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_btn_sys")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlantListPanel" parent="." instance=ExtResource("6_kfbq2")]
+visible = false
+layout_mode = 1
+
+[node name="SystemPanel" parent="." instance=ExtResource("7_sp")]

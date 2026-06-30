@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmorwyynqp8dk"]
+
+[ext_resource type="Script" uid="uid://csajekmfflacn" path="res://battle/sidebar.gd" id="1_d6awq"]
+[ext_resource type="Texture2D" uid="uid://du6ptqyn0ehbv" path="res://battle/侧边栏_1782724139458_857_nobg.png" id="2_nlk5u"]
+[ext_resource type="Texture2D" uid="uid://bid38nqa142qf" path="res://assets/plants/阳光.png" id="4_nlk5u"]
+
+[node name="Sidebar" type="Control"]
+layout_mode = 3
+anchor_right = 0.2
+anchor_bottom = 1.0
+script = ExtResource("1_d6awq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113665, 0.113665, 0.113665, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 4.59999
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nlk5u")
+expand_mode = 4
+
+[node name="SunContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 94.0
+offset_top = 82.0
+offset_right = 134.0
+offset_bottom = 122.0
+
+[node name="SunTexture" type="TextureRect" parent="SunContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = -31.0
+offset_top = -51.0
+offset_right = 189.0
+offset_bottom = 160.0
+scale = Vector2(0.206877, 0.169352)
+texture = ExtResource("4_nlk5u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SunCount" type="Label" parent="SunContainer" groups=["sun_hud"]]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -54.0
+offset_right = 64.0
+offset_bottom = 34.0
+scale = Vector2(0.465241, 0.449541)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="CardContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 125.0
+offset_right = 105.0
+offset_bottom = 165.0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://mrvag74lee3s"]
+
+[ext_resource type="Script" uid="uid://b5402sw247p22" path="res://units/zombies/墓碑.gd" id="1_8cya2"]
+[ext_resource type="Texture2D" uid="uid://b28kueoul3b60" path="res://assets/zombies/棺材.png" id="2_fagi5"]
+
+[node name="墓碑" type="Node2D"]
+script = ExtResource("1_8cya2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_fagi5")

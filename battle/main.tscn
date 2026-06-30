@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhdblcbbr5lsw"]
+
+[ext_resource type="PackedScene" uid="uid://dhbk7htw0nu71" path="res://battle/grid_map.tscn" id="1_53q0u"]
+[ext_resource type="Script" uid="uid://di1wowwwxv5fd" path="res://battle/main.gd" id="1_ysrdb"]
+[ext_resource type="PackedScene" uid="uid://dmorwyynqp8dk" path="res://battle/sidebar.tscn" id="2_pjrb6"]
+[ext_resource type="Script" uid="uid://cfqnjvtuni8ns" path="res://battle/grid_map.gd" id="3_k4s8m"]
+[ext_resource type="Script" uid="uid://di04hdsidtrn" path="res://battle/camera_2d.gd" id="3_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://bemnfy36ds40b" path="res://battle/victory_panel.tscn" id="4_vp"]
+[ext_resource type="Script" uid="uid://dvonwqh8yc8e0" path="res://battle/minimap.gd" id="5_mm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.88, 0.88, 0.35)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(1, 1, 1, 0.08)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.6)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ysrdb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sidebar" parent="CanvasLayer" instance=ExtResource("2_pjrb6")]
+
+[node name="Minimap" type="Control" parent="CanvasLayer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+script = ExtResource("5_mm")
+
+[node name="SunLayer" type="CanvasLayer" parent="." groups=["sun_layer"]]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -22)
+script = ExtResource("3_xwkvk")
+
+[node name="LevelHost" type="Node2D" parent="."]
+
+[node name="GridOverlay" parent="." instance=ExtResource("1_53q0u")]
+position = Vector2(459, 424)
+script = ExtResource("3_k4s8m")
+
+[node name="DefeatLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="DefeatPanel" type="Control" parent="DefeatLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="DefeatLayer/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.95)
+
+[node name="Label" type="Label" parent="DefeatLayer/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -140.0
+offset_right = 200.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_font_sizes/font_size = 44
+text = "游戏失败"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryBtn" type="Button" parent="DefeatLayer/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+text = "重试"
+
+[node name="ReturnBtn" type="Button" parent="DefeatLayer/DefeatPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 130.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn")
+text = "返回"
+
+[node name="VictoryPanel" parent="." instance=ExtResource("4_vp")]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://i0sl8g4nhepk"]
+
+[ext_resource type="Script" uid="uid://crownij5400k7" path="res://main/level_card.gd" id="1_2fedw"]
+[ext_resource type="Texture2D" uid="uid://brfaa0c5k7ceu" path="res://main/level_bg.png" id="2_b3oki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_card"]
+
+[node name="LevelCard" type="Button"]
+custom_minimum_size = Vector2(220, 150)
+offset_right = 220.0
+offset_bottom = 150.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_card")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_card")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_card")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_card")
+script = ExtResource("1_2fedw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b3oki")
+expand_mode = 2
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -117.0
+offset_right = 30.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.744319, 3.7542e-06, 2.88785e-07, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_card")
+text = "关卡名"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClearInfoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -73.0
+offset_right = 98.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_card")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -43.0
+offset_right = 113.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.78, 0.7, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_card")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

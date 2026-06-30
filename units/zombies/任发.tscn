@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbbibcbuo6i3a"]
+
+[ext_resource type="Script" uid="uid://dsqccq58pheys" path="res://units/zombies/zombie_base.gd" id="1_f4s7n"]
+[ext_resource type="Texture2D" uid="uid://befdm2u5wah2b" path="res://assets/zombies/任发.png" id="2_f4s7n"]
+
+[node name="阿僵" type="Node2D"]
+script = ExtResource("1_f4s7n")
+max_hp = 600.0
+attack_damage = 40.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(1.26607, 0.939631)
+texture = ExtResource("2_f4s7n")

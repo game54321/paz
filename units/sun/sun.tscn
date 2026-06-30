@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cncaocq2lp5vl"]
+
+[ext_resource type="Texture2D" uid="uid://bid38nqa142qf" path="res://assets/plants/阳光.png" id="1_8uvey"]
+[ext_resource type="Script" uid="uid://l6fculugyshv" path="res://units/sun/sun.gd" id="1_x3by1"]
+
+[node name="Sun" type="Node2D"]
+script = ExtResource("1_x3by1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.500032, 0.466389)
+texture = ExtResource("1_8uvey")

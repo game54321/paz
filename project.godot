@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="植物对战僵尸中文版"
+run/main_scene="res://launch/launch.tscn"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+InputUtil="*res://utils/input_util.gd"
+EntryTable="*res://autoload/entry_table.gd"
+SceneManager="*res://autoload/scene_manager.gd"
+PlacementManager="*res://autoload/placement_manager.gd"
+PlantTable="*res://autoload/plant_table.gd"
+PlayerData="*res://autoload/player_data.gd"
+ZIndex="*res://autoload/z_index.gd"
+BGM="*res://autoload/bgm.gd"
+Toast="*res://autoload/toast.gd"
+DebugPanel="*res://main/debug_panel.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://x68x12oncrs6"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

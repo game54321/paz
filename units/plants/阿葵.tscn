@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhb204rhp3lxp"]
+
+[ext_resource type="PackedScene" uid="uid://dg5nfqieyplgx" path="res://units/plants/plant_base.tscn" id="1_60on2"]
+[ext_resource type="Texture2D" uid="uid://dy0hgo2ughi7w" path="res://assets/plants/阿葵.png" id="2_svnmi"]
+[ext_resource type="Script" uid="uid://bsdyyr0edel27" path="res://units/plants/阿葵.gd" id="2_u8hhq"]
+
+[node name="PlantBase" instance=ExtResource("1_60on2")]
+script = ExtResource("2_u8hhq")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_svnmi")

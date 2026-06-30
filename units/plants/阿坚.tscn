@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7k9nyo4rqekb"]
+
+[ext_resource type="PackedScene" uid="uid://dg5nfqieyplgx" path="res://units/plants/plant_base.tscn" id="1_ajian"]
+[ext_resource type="Texture2D" uid="uid://dxye6iowmh560" path="res://assets/plants/阿坚.png" id="2_ajian"]
+[ext_resource type="Script" uid="uid://b7k8mxn3qpdja" path="res://units/plants/阿坚.gd" id="3_ajian"]
+
+[node name="PlantBase" instance=ExtResource("1_ajian")]
+script = ExtResource("3_ajian")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_ajian")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://660vobmca5qf"]
+
+[ext_resource type="Script" uid="uid://suabtrnqvkpo" path="res://units/plants/seed_card.gd" id="1_f1eyr"]
+[ext_resource type="PackedScene" uid="uid://bhb204rhp3lxp" path="res://units/plants/阿葵.tscn" id="2_3tmhv"]
+[ext_resource type="Texture2D" uid="uid://dy0hgo2ughi7w" path="res://assets/plants/阿葵.png" id="3_akui"]
+
+[node name="SeedCard" type="Node2D"]
+script = ExtResource("1_f1eyr")
+plant_scene = ExtResource("2_3tmhv")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("3_akui")

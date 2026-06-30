@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8l9pzn6tqgmd"]
+
+[ext_resource type="PackedScene" uid="uid://dg5nfqieyplgx" path="res://units/plants/plant_base.tscn" id="1_woge"]
+[ext_resource type="Texture2D" uid="uid://dbk2sp7x17p88" path="res://assets/plants/窝哥.png" id="2_woge"]
+[ext_resource type="Script" uid="uid://b8l9ozn5sqflc" path="res://units/plants/窝哥.gd" id="3_woge"]
+
+[node name="PlantBase" instance=ExtResource("1_woge")]
+script = ExtResource("3_woge")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_woge")
