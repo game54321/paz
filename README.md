@@ -4,5 +4,4 @@
 
 ## 在线预览
 
-- GitHub Pages：https://game54321.github.io/paz/
-- Gitee 仓库：https://gitee.com/game54321/paz
+https://game54321.github.io/paz/
