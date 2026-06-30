@@ -1,0 +1,75 @@
+name: 构建并部署 Web 版到 GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 缓存 Godot 编辑器
+        id: cache-editor
+        uses: actions/cache@v4
+        with:
+          path: godot_bin
+          key: godot-4.4.1-linux-x86_64
+
+      - name: 下载 Godot 4.4.1
+        if: steps.cache-editor.outputs.cache-hit != 'true'
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.4.1-stable_linux.x86_64.zip
+          mv Godot_v4.4.1-stable_linux.x86_64 godot_bin
+          chmod +x godot_bin
+          rm Godot_v4.4.1-stable_linux.x86_64.zip
+
+      - name: 缓存导出模板
+        id: cache-templates
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/.local/share/godot/export_templates/4.4.1.stable
+          key: godot-templates-4.4.1-stable
+
+      - name: 下载导出模板
+        if: steps.cache-templates.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.4.1.stable"
+          wget -q https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_export_templates.tpz
+          unzip -q Godot_v4.4.1-stable_export_templates.tpz -d /tmp/tpz
+          mv /tmp/tpz/templates/* "$HOME/.local/share/godot/export_templates/4.4.1.stable/"
+          rm -rf /tmp/tpz Godot_v4.4.1-stable_export_templates.tpz
+
+      - name: 执行 Web 导出
+        run: |
+          mkdir -p export/web
+          ./godot_bin --headless --export-release "Web" export/web/index.html
+          ls -la export/web/
+
+      - name: 上传 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: export/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
